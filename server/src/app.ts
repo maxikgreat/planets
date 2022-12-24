@@ -1,6 +1,12 @@
 import express from 'express'
 import cors from 'cors'
-import { planetController, name } from './controllers'
+import path from 'path'
+import {
+  planetController,
+  planetName,
+  launchController,
+  launchName,
+} from './controllers'
 
 const port = 3001
 
@@ -11,7 +17,14 @@ app.use(
     origin: '*',
   }),
 )
-app.use(name, planetController)
+app.use(planetName, planetController)
+app.use(launchName, launchController)
+
+app.use(express.static(path.join(process.cwd(), 'public')))
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(process.cwd(), 'public', 'index.html'))
+})
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console

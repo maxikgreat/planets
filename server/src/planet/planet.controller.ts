@@ -1,11 +1,11 @@
 import { Router } from 'express'
-import { getAllPlanets } from './planet.service'
+import { getAll } from './planet.service'
 
 export const planetController = Router()
-export const name = '/planets'
+export const planetName = '/planets'
 
 planetController.get('/', (req, res) => {
-  const planets = getAllPlanets()
+  const planets = getAll()
 
   res.json(planets)
 })
