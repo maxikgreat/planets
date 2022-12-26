@@ -10,7 +10,7 @@ import {
 
 const port = 3001
 
-const app = express()
+export const app = express()
 app.use(express.json())
 app.use(
   cors({
@@ -26,7 +26,9 @@ app.get('/*', (req, res) => {
   res.sendFile(path.join(process.cwd(), 'public', 'index.html'))
 })
 
-app.listen(port, () => {
-  // eslint-disable-next-line no-console
-  console.log('Server started on port ' + port)
-})
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(port, () => {
+    // eslint-disable-next-line no-console
+    console.log('Server started on port ' + port)
+  })
+}

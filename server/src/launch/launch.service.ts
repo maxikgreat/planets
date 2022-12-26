@@ -3,7 +3,7 @@ import { LaunchCreateDto } from '@/launch/launch.dto'
 
 const launchNotExist = {
   status: 404,
-  message: 'LAUNCH_DOES_NOT_EXIST',
+  error: 'LAUNCH_DOES_NOT_EXIST',
 }
 
 export const getAll = () =>
