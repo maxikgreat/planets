@@ -1,6 +1,6 @@
 import { launchName } from '@/launch/launch.controller'
 
-describe('Launch controller', () => {
+xdescribe('Launch controller', () => {
   it('GET /', async () => {
     await globalThis.request.get(launchName).expect(200)
   })

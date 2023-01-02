@@ -4,8 +4,8 @@ import { getAll } from './planet.service'
 export const planetController = Router()
 export const planetName = '/planets'
 
-planetController.get('/', (req, res) => {
-  const planets = getAll()
+planetController.get('/', async (req, res) => {
+  const planets = await getAll()
 
   res.json(planets)
 })

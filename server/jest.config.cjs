@@ -6,4 +6,5 @@ module.exports = {
   },
   globalSetup: '<rootDir>/tests/globalSetup.ts',
   globalTeardown: '<rootDir>/tests/globalTeardown.ts',
+  modulePathIgnorePatterns: ['<rootDir>/dist/']
 };

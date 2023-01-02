@@ -4,11 +4,12 @@ import { getAll, create, deleteLaunch } from '@/launch/launch.service'
 export const launchController = Router()
 export const launchName = '/launches'
 
-launchController.get('/', (req, res) => {
-  res.json(getAll())
+launchController.get('/', async (req, res) => {
+  const launches = await getAll()
+  res.json(launches)
 })
 
-launchController.post('/', (req, res) => {
+launchController.post('/', async (req, res) => {
   const mission = req.body.mission
   const rocket = req.body.rocket
   const destination = req.body.target
@@ -26,7 +27,7 @@ launchController.post('/', (req, res) => {
     })
   }
 
-  const createdLaunch = create({
+  const createdLaunch = await create({
     mission,
     rocket,
     launchDate,
