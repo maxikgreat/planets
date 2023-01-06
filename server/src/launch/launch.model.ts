@@ -4,7 +4,7 @@ export type LaunchType = {
   mission: string
   rocket: string
   launchDate: Date
-  destination: string
+  destination?: string
   flightNumber: number
   customers: string[]
   upcoming: boolean
@@ -13,15 +13,18 @@ export type LaunchType = {
 
 export const launchName = 'Launch'
 
-const schema = new Schema<LaunchType>({
-  flightNumber: { type: Number, required: true },
-  launchDate: { type: Date, required: true },
-  mission: { type: String, required: true },
-  rocket: { type: String, required: true },
-  destination: { type: String, required: true },
-  upcoming: { type: Boolean, required: true },
-  success: { type: Boolean, required: true, default: true },
-  customers: [String],
-})
+const schema = new Schema<LaunchType>(
+  {
+    flightNumber: { type: Number, required: true },
+    launchDate: { type: Date, required: true },
+    mission: { type: String, required: true },
+    rocket: { type: String, required: true },
+    destination: { type: String },
+    upcoming: { type: Boolean, required: true },
+    success: { type: Boolean, required: true, default: true },
+    customers: [String],
+  },
+  { versionKey: false },
+)
 
 export const Launch = model<LaunchType>(launchName, schema)

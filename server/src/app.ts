@@ -2,13 +2,8 @@ import './bootstrap'
 import express from 'express'
 import cors from 'cors'
 import path from 'path'
-import {
-  planetController,
-  planetName,
-  launchController,
-  launchName,
-} from './controllers'
 import { mongoConnect } from '@/mongo'
+import { api } from './api'
 
 const port = 3001
 
@@ -19,9 +14,8 @@ app.use(
     origin: '*',
   }),
 )
-app.use(planetName, planetController)
-app.use(launchName, launchController)
 
+app.use('/v1', api)
 app.use(express.static(path.join(process.cwd(), 'public')))
 
 app.get('/*', (req, res) => {

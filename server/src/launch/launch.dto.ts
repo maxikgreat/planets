@@ -1,6 +1,6 @@
-import { Launch } from '@/launch/launch.model'
+import { LaunchType } from '@/launch/launch.model'
 
 export type LaunchCreateDto = Pick<
-  Launch,
+  LaunchType,
   'mission' | 'rocket' | 'destination' | 'launchDate'
 >

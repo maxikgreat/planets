@@ -2,10 +2,11 @@ import { Router } from 'express'
 import { getAll, create, deleteLaunch } from '@/launch/launch.service'
 
 export const launchController = Router()
-export const launchName = '/launches'
+export const launchName = 'launches'
 
 launchController.get('/', async (req, res) => {
-  const launches = await getAll()
+  const { page, limit } = req.query
+  const launches = await getAll(Number(page), Number(limit))
   res.json(launches)
 })
 

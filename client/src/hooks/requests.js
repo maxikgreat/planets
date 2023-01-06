@@ -1,11 +1,13 @@
-const baseUrl = "http://localhost:3001";
+const baseUrl = "http://localhost:3001/v1";
 
 function httpGetPlanets() {
   return fetch(`${baseUrl}/planets`).then((response) => response.json());
 }
 
 async function httpGetLaunches() {
-  return fetch(`${baseUrl}/launches`).then((response) => response.json());
+  return fetch(`${baseUrl}/launches?page=1&limit=10`).then((response) =>
+    response.json()
+  );
 }
 
 async function httpSubmitLaunch(launch) {
